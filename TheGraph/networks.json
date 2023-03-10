@@ -1,0 +1,8 @@
+{
+  "goerli": {
+    "Transaction": {
+      "address": "0x4629E54e8aF11Dca4080D79b19b834dEE3cDbd5f",
+      "startBlock": 8468974
+    }
+  }
+}

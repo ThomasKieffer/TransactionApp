@@ -1,0 +1,140 @@
+
+How I set up this project
+create a nextjs repo
+cd repo
+$npx create-next-app@latest --typescript .
+
+install react moralis
+$npm install react react-dom moralis-v1 react-moralis
+
+Following error : "Module not found: Error: Can’t resolve ‘magic-sdk’"
+I installed magic-sdk
+$magic-sdk @walletconnect/web3-provider @web3auth/web3auth
+
+
+------------------------
+prettier eslint tuto => https://www.youtube.com/watch?v=SydnKbGc7W8
+
+npm install -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
+
+//install airbnb config
+npx install-peerdeps --dev eslint-config-airbnb
+
+//create prettier config file in root : .prettierrc
+you can add rulessuch as
+{
+  "singleQuote": true
+}
+
+
+//modify .eslintrc.json as follow
+
+{
+  "extends": ["next/core-web-vitals", "airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier" : "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "prettier/prettier": 
+  [ "error",
+    {
+      "endOfLine": "auto"}
+  ]
+}
+
+
+You can choose to add/remove the airbnb tag.
+You can choose to adjust settings by adding rules such as : "prettier/prettier" : "warn"
+------------------------
+
+componant lib
+Wweb3uikit to simplify the way to make a connect button and others widgets
+npm install @web3uikit/core @web3uikit/web3 @web3uikit/icons
+
+------------------------
+
+Setup a self hosted server --> not used but possibility
+https://docs.moralis.io/web3-data-api/self-hosted-moralis-server/self-hosted-moralis-server
+https://youtu.be/l2qTyc-V9cM
+
+-----------------------
+
+deploy to goerli
+in smart contract developpement folder
+npm install dotenv
+
+edit .env file such as 
+
+INFURA_API_KEY = "replace with your INFURA_API_KEY"
+or
+ALCHEMY_API_KEY = "replace with your INFURA_API_KEY"
+PRIVATE_KEY = "replace with your metamask private key"
+
+edit harhay config such as
+add require('dotenv').config();
+
+in networks add 
+    goerli: {
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [`${process.env.PRIVATE_KEY}`]
+    }
+
+
+--------------------------------
+get solidity compiler version
+npm -g ls | grep solc
+
+--------------------------------
+etherscan verification with hardhat-etherscan
+https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-etherscan
+
+npm install --save-dev @nomiclabs/hardhat-etherscan
+
+using javascript, add this hardhat.config.js:
+require("@nomiclabs/hardhat-etherscan");
+
+using TypeScript, add this to your hardhat.config.ts:
+import "@nomiclabs/hardhat-etherscan";
+
+add this to hardhat.config.js
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: "YOUR_ETHERSCAN_API_KEY"
+  }
+
+
+--------------------------------
+Verify on etherscan
+run : npx hardhat verify --network mainnet DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
+
+--------------------------------
+
+The graph
+
+npm install -g @graphprotocol/graph-cli
+graph init --studio transactionapp
+
+install GraphQL syntax highligter extension from GraphQL Foundation
+
+modify schema.graphql to obtain desired tables
+then run 'graph codegen' to update generated/schema.ts
+
+
+Authenticate within the CLI, build and deploy your subgraph to the Studio.
+graph auth --studio 'Replace this with your subgraph deploy Key'
+graph codegen && graph build
+graph deploy --studio transactionapp
+
+--------------------------------
+Use apollo client to fetch, cache interact with remote Data with GraphQL.
+npm install @apollo/client graphql
+
+--------------------------------
+use of tailwindcss for formating style
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+install postcss language support extension to remove error in globals.css
+also install tainwind extension for completion

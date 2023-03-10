@@ -1,0 +1,25 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Transaction
+    network: goerli
+    source:
+      address: "0x4629E54e8aF11Dca4080D79b19b834dEE3cDbd5f"
+      abi: Transaction
+      # startBlock: 8468974
+      startBlock: 8508840
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfered
+      abis:
+        - name: Transaction
+          file: ./abis/Transaction.json
+      eventHandlers:
+        - event: Transfered(indexed address,indexed address,uint256)
+          handler: handleTransfered
+      file: ./src/transaction.ts

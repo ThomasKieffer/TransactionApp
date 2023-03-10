@@ -1,0 +1,13 @@
+{
+  "extends": ["next/core-web-vitals", "airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier" : "warn"
+    // "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "prettier/prettier": 
+  [ "error",
+    {
+      "endOfLine": "auto"}
+  ]
+}

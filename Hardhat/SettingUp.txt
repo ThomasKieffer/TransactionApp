@@ -1,0 +1,25 @@
+Installation
+npm install --save-dev hardhat
+
+Create the sample project
+npx hardhat
+
+Add libraries
+npm install @openzeppelin/contracts
+
+Compile
+npx hardhat compile
+
+Run Tests
+npx hardhat test
+
+Deploy contract on goerli
+cd Hardhat
+npx hardhat run scripts/deploy-and-update-frontend.ts --network goerli
+
+Add and Edit a .env such as:
+UPDATE_FRONT_END = true
+INFURA_API_KEY = 
+ALCHEMY_API_KEY = 
+PRIVATE_KEY = 
+ETHERSCAN_API_KEY = 
