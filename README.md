@@ -1,5 +1,3 @@
-# TransactionApp
-
 <br />
 <div align="center">
 <h1 align="center">TransactionApp</h1>
@@ -36,6 +34,7 @@ Then follow the instructions.
 ```sh
 # In one terminal
 $ cd App
+$ npm install
 $ npm run dev
 ```
 
